@@ -7,21 +7,21 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>Home</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -48,9 +48,9 @@
                     <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt"
+                            <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
                                 data-title="English">English</option>
-                            <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu"
+                            <option value='yu' data-image="assets/img/flag-2.jpg" data-imagecss="flag yu"
                                 data-title="Bangladesh">German </option>
                         </select>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="#">
-                                <img src="img/logo.png" alt="">
+                                <img src="assets/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
+                                                    <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
                                                             <p>₫60.00 x 1</p>
@@ -110,7 +110,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
+                                                    <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
                                                             <p>₫60.00 x 1</p>
@@ -198,7 +198,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-1.jpg" alt="">
+                                        <img src="assets/img/products/product-1.jpg" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -223,7 +223,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-2.jpg" alt="">
+                                        <img src="assets/img/products/product-2.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -247,7 +247,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-3.jpg" alt="">
+                                        <img src="assets/img/products/product-3.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -271,7 +271,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-4.jpg" alt="">
+                                        <img src="assets/img/products/product-4.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -295,7 +295,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-5.jpg" alt="">
+                                        <img src="assets/img/products/product-5.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -319,7 +319,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-6.jpg" alt="">
+                                        <img src="assets/img/products/product-6.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -343,7 +343,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-7.jpg" alt="">
+                                        <img src="assets/img/products/product-7.jpg" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -368,7 +368,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-8.jpg" alt="">
+                                        <img src="assets/img/products/product-8.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -392,7 +392,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="img/products/product-9.jpg" alt="">
+                                        <img src="assets/img/products/product-9.jpg" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -428,27 +428,27 @@
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
+                        <img src="assets/img/logo-carousel/logo-1.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
+                        <img src="assets/img/logo-carousel/logo-2.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
+                        <img src="assets/img/logo-carousel/logo-3.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
+                        <img src="assets/img/logo-carousel/logo-4.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
+                        <img src="assets/img/logo-carousel/logo-5.png" alt="">
                     </div>
                 </div>
             </div>
@@ -463,7 +463,7 @@
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="assets/img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -522,7 +522,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">
-                            <img src="img/payment-method.png" alt="">
+                            <img src="assets/assets/img/payment-method.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -532,16 +532,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.zoom.min.js"></script>
-    <script src="js/jquery.dd.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.zoom.min.js"></script>
+    <script src="assets/js/jquery.dd.min.js"></script>
+    <script src="assets/js/jquery.slicknav.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
