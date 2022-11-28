@@ -378,7 +378,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 url:'AddCart/'+id,
                 type:'GET',
             }).done(function(response){
-                console.log(response);
+                //console.log(response);
                 $("#change-item-cart").empty();
                 $("#change-item-cart").html(response);
                 // success notification
@@ -387,6 +387,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 alertify.success('Add Cart Success');
             });
             //console.log(id);
+            $("#change-item-cart").on("click",".si-close i",function(){
+                //console.log($(this).data("id"));
+                $.ajax({
+                url:'DeleteItemCart/'+$(this).data("id"),
+                type:'GET',
+            }).done(function(response){
+                //console.log(response);
+                $("#change-item-cart").empty();
+                $("#change-item-cart").html(response);
+                // success notification
+                // Shorthand for:
+                // alertify.notify( message, 'success', [wait, callback]);
+                alertify.success('Delete Item Success');
+            });
+            });
         }
     </script>
 </body>

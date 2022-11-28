@@ -13,7 +13,7 @@
                     </div>
                 </td>
                 <td class="si-close">
-                    <i class="ti-close"></i>
+                    <i class="ti-close" data-id="{{$item['productInfo']->id}}"></i>
                 </td>
             </tr>
             @endforeach

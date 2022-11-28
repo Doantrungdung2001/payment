@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Cart;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\DB;
 use Session;
 
@@ -35,5 +36,21 @@ class CartController extends Controller
         }
         return view('item',compact('newcart'));
         //dd($product);
+    }
+
+    public function DeleteItemCart(Request $req,$id){
+        if(Session('Cart') != null){
+            $oldcart = Session('Cart');
+        }else{
+            $oldcart = null;
+        }
+        $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
+        $newcart->DeleteItemCart($id);
+        if(Count($newcart->product) > 0){
+            $req->Session()->put('Cart',$newcart);
+        }else{
+            $req->Session()->forget('Cart');
+        }
+        return view('item',compact('newcart'));
     }
 }
