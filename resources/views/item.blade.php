@@ -5,7 +5,7 @@
         <tbody>
             @foreach($newcart->product as $item)
             <tr>
-                <td class="si-pic"><img src="assets/img/select-{{$item['productInfo']->img}}" alt=""></td>
+                <td class="si-pic"><img src="assets/img/products/{{$item['productInfo']->img}}" alt=""></td>
                 <td class="si-text">
                     <div class="product-selected">
                         <p>{{number_format($item['productInfo']->price)}}₫ x {{$item['quanty']}}</p>
