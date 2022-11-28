@@ -25,9 +25,6 @@
 </head>
 
 <body>
-@if($product != null)
-    <p>Da co du lieu</p>
-@endif
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -97,40 +94,43 @@
                                     <span>3</span>
                                 </a>
                                 <div class="cart-hover">
-                                    <div class="select-items">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>₫60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>₫60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <div id ="change-item-cart">
+                                        <div class="select-items">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>₫60.00 x 1</p>
+                                                                <h6>Kabino Bedside Table</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                            <i class="ti-close"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>₫60.00 x 1</p>
+                                                                <h6>Kabino Bedside Table</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                            <i class="ti-close"></i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="select-total">
+                                            <span>total:</span>
+                                            <h5>₫120.00</h5>
+                                        </div>
                                     </div>
-                                    <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>₫120.00</h5>
-                                    </div>
+                                    
                                     <div class="select-button">
                                         <a href="#" class="primary-btn view-card">VIEW CARD</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
@@ -209,7 +209,7 @@
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Add Cart</a></li>
+                                            <li class="quick-view"><a onclick="AddCart({{$prd->id}})" href="javascript:">+ Add Cart</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
@@ -354,6 +354,36 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="assets/js/jquery.slicknav.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+    <script>
+        function AddCart(id){
+            $.ajax({
+                url:'AddCart/'+id,
+                type:'GET',
+            }).done(function(response){
+                console.log(response);
+                $("#change-item-cart").empty();
+                $("#change-item-cart").html(response);
+                // success notification
+                // Shorthand for:
+                // alertify.notify( message, 'success', [wait, callback]);
+                alertify.success('Add Cart Success');
+            });
+            //console.log(id);
+        }
+    </script>
 </body>
 
 </html>

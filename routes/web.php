@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'App\Http\Controllers\CartController@Index');
+Route::get('/AddCart/{id}', 'App\Http\Controllers\CartController@AddCart');
 /*
 Route::get('/home', function () {
     return view('home');
