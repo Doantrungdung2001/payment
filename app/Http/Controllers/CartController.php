@@ -34,7 +34,7 @@ class CartController extends Controller
             $req->session()->put('Cart',$newcart);
            // dd($new_cart);   
         }
-        return view('item',compact('newcart'));
+        return view('item');
         //dd($product);
     }
 
@@ -51,6 +51,10 @@ class CartController extends Controller
         }else{
             $req->Session()->forget('Cart');
         }
-        return view('item',compact('newcart'));
+        return view('item');
+    }
+
+    public function ViewCart(){
+        return view('cart');
     }
 }

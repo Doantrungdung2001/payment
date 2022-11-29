@@ -96,48 +96,46 @@
                             </li>
                             <li class="cart-icon"><a href="#">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    @if(Session::has("Cart") != null)
+                                        <span id="total-quanty-show">{{Session::get('Cart')->totalQuanty}}</span>
+                                    
+                                    @else
+                                        <span id="total-quanty-show">0</span>
+                                    @endif
+                                    
                                 </a>
                                 <div class="cart-hover">
                                     <div id ="change-item-cart">
+                                        @if(Session::has("Cart") != null)
                                         <div class="select-items">
                                             <table>
                                                 <tbody>
+                                                    @foreach(Session::get('Cart')->product as $item)
                                                     <tr>
-                                                        <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
+                                                        <td class="si-pic"><img src="assets/img/products/{{$item['productInfo']->img}}" alt=""></td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                <p>₫60.00 x 1</p>
-                                                                <h6>Kabino Bedside Table</h6>
+                                                                <p>{{number_format($item['productInfo']->price)}}₫ x {{$item['quanty']}}</p>
+                                                                <h6>{{$item['productInfo']->name}}</h6>
                                                             </div>
                                                         </td>
                                                         <td class="si-close">
-                                                            <i class="ti-close"></i>
+                                                            <i class="ti-close" data-id="{{$item['productInfo']->id}}"></i>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
-                                                        <td class="si-text">
-                                                            <div class="product-selected">
-                                                                <p>₫60.00 x 1</p>
-                                                                <h6>Kabino Bedside Table</h6>
-                                                            </div>
-                                                        </td>
-                                                        <td class="si-close">
-                                                            <i class="ti-close"></i>
-                                                        </td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="select-total">
                                             <span>total:</span>
-                                            <h5>₫120.00</h5>
+                                            <h5>{{number_format(Session::get('Cart')->totalPrice)}}₫</h5>
                                         </div>
+                                        @endif
                                     </div>
                                     
                                     <div class="select-button">
-                                        <a href="cart" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="{{url('/Cart')}}" class="primary-btn view-card">VIEW CARD</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -379,29 +377,38 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 type:'GET',
             }).done(function(response){
                 //console.log(response);
-                $("#change-item-cart").empty();
-                $("#change-item-cart").html(response);
+                //$("#change-item-cart").empty();
+                //$("#change-item-cart").html(response);
                 // success notification
                 // Shorthand for:
                 // alertify.notify( message, 'success', [wait, callback]);
+                RenderCart(response);
                 alertify.success('Add Cart Success');
             });
+        }
             //console.log(id);
-            $("#change-item-cart").on("click",".si-close i",function(){
-                //console.log($(this).data("id"));
-                $.ajax({
-                url:'DeleteItemCart/'+$(this).data("id"),
-                type:'GET',
-            }).done(function(response){
-                //console.log(response);
-                $("#change-item-cart").empty();
-                $("#change-item-cart").html(response);
-                // success notification
-                // Shorthand for:
-                // alertify.notify( message, 'success', [wait, callback]);
-                alertify.success('Delete Item Success');
+        $("#change-item-cart").on("click",".si-close i",function(){
+            //console.log($(this).data("id"));
+            $.ajax({
+            url:'DeleteItemCart/'+$(this).data("id"),
+            type:'GET',
+        }).done(function(response){
+            //console.log(response);
+            //$("#change-item-cart").empty();
+            //$("#change-item-cart").html(response);
+            // success notification
+            // Shorthand for:
+            // alertify.notify( message, 'success', [wait, callback]);
+            RenderCart(response);
+            alertify.success('Delete Item Success');
             });
-            });
+        });
+        
+        function RenderCart(response){
+            $("#change-item-cart").empty();
+            $("#change-item-cart").html(response);
+            $("#total-quanty-show").text($("#total-quanty-cart").val());
+            console.log($("#total-quanty-cart").val());
         }
     </script>
 </body>
