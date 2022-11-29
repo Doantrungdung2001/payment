@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'App\Http\Controllers\CartController@Index');
 Route::get('/AddCart/{id}', 'App\Http\Controllers\CartController@AddCart');
-Route::get('/DeleteItemCart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart');
+Route::get('/Delete-Item-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart');
 Route::get('/Cart', 'App\Http\Controllers\CartController@ViewCart');
+Route::get('/Delete-Item-List-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemListCart');
 /*
 Route::get('/home', function () {
     return view('home');

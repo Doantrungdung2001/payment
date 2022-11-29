@@ -390,17 +390,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         $("#change-item-cart").on("click",".si-close i",function(){
             //console.log($(this).data("id"));
             $.ajax({
-            url:'DeleteItemCart/'+$(this).data("id"),
-            type:'GET',
-        }).done(function(response){
+                url:'Delete-Item-Cart/'+$(this).data("id"),
+                type:'GET',
+            }).done(function(response){
             //console.log(response);
             //$("#change-item-cart").empty();
             //$("#change-item-cart").html(response);
             // success notification
             // Shorthand for:
             // alertify.notify( message, 'success', [wait, callback]);
-            RenderCart(response);
-            alertify.success('Delete Item Success');
+                RenderCart(response);
+                alertify.success('Delete Item Success');
             });
         });
         
