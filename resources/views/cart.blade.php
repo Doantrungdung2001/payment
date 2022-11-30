@@ -22,6 +22,12 @@
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    
+    <style>
+        .cart-pic img{
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,12 +83,12 @@
                                     <td class="qua-col first-row">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="{{$item['quanty']}}">
+                                                <input id="quanty-item-{{$item['productInfo']->id}}" type="text" value="{{$item['quanty']}}">
                                             </div>
                                         </div>
                                     </td>
                                     <td class="total-price first-row">{{number_format($item['price'])}}₫</td>
-                                    <td class="close-td first-row"><i class="ti-save"></i></td>
+                                    <td class="close-td first-row"><i class="ti-save" onclick="SaveItemListCart({{$item['productInfo']->id}});"></i></td>
                                     <td class="close-td first-row"><i class="ti-close" onclick="DeleteItemListCart({{$item['productInfo']->id}});"></i></td>
                                     
                                 </tr>
@@ -94,11 +100,13 @@
                     <div class="row">
                         <div class="col-lg-4 offset-lg-8">
                             <div class="proceed-checkout">
+                                @if(Session::has("Cart") != null)
                                 <ul>
                                     <li class="subtotal">Total Quanty : <span>{{Session::get('Cart')->totalQuanty}}</span></li>
                                     <li class="cart-total">Total Price :<span>{{number_format(Session::get('Cart')->totalPrice)}}₫</span></li>
                                 </ul>
                                 <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -140,11 +148,37 @@
     <script src="assets/js/jquery.slicknav.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+     <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
     <script>
         function DeleteItemListCart(id){
-            console.log(id);
+            //console.log(id);
             $.ajax({
                 url:'Delete-Item-List-Cart/'+id,
+                type:'GET',
+            }).done(function(response){
+            
+                RenderListCart(response);
+                alertify.success('Delete Item Success');
+            });
+        }
+        
+        function SaveItemListCart(id){
+            //console.log(id);
+            
+            $.ajax({
+                url:'Save-Item-List-Cart/'+id+'/'+$("#quanty-item-"+id).val(),
                 type:'GET',
             }).done(function(response){
             //console.log(response);
@@ -154,12 +188,34 @@
             // Shorthand for:
             // alertify.notify( message, 'success', [wait, callback]);
                 RenderListCart(response);
-                //alertify.success('Delete Item Success');
+                alertify.success('Update Item Success');
             });
         }
+        
         function RenderListCart(response){
             $("#list-cart").empty();
             $("#list-cart").html(response);
+            /*-------------------
+		    Quantity change
+	        --------------------- */
+            var proQty = $('.pro-qty');
+            proQty.prepend('<span class="dec qtybtn">-</span>');
+            proQty.append('<span class="inc qtybtn">+</span>');
+            proQty.on('click', '.qtybtn', function () {
+                var $button = $(this);
+                var oldValue = $button.parent().find('input').val();
+                if ($button.hasClass('inc')) {
+                    var newVal = parseFloat(oldValue) + 1;
+                } else {
+                    // Don't allow decrementing below zero
+                    if (oldValue > 0) {
+                        var newVal = parseFloat(oldValue) - 1;
+                    } else {
+                        newVal = 0;
+                    }
+                }
+                $button.parent().find('input').val(newVal);
+            });
         }
     </script>
 </body>

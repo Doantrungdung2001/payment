@@ -74,4 +74,19 @@ class CartController extends Controller
         }
         return view('list-cart');
     }
+
+    public function SaveItemListCart(Request $req,$id,$quanty){
+        # code...
+        if(Session('Cart') != null){
+            $oldcart = Session('Cart');
+        }else{
+            $oldcart = null;
+        }
+        $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
+        $newcart->UpdateItemCart($id,$quanty);
+
+        $req->Session()->put('Cart',$newcart);
+
+        return view('list-cart');
+    }
 }

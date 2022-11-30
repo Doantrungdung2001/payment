@@ -135,7 +135,7 @@
                                     </div>
                                     
                                     <div class="select-button">
-                                        <a href="{{url('/Cart')}}" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="{{url('/Cart')}}" class="primary-btn view-card">VIEW CART</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -376,12 +376,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 url:'AddCart/'+id,
                 type:'GET',
             }).done(function(response){
-                //console.log(response);
-                //$("#change-item-cart").empty();
-                //$("#change-item-cart").html(response);
-                // success notification
-                // Shorthand for:
-                // alertify.notify( message, 'success', [wait, callback]);
                 RenderCart(response);
                 alertify.success('Add Cart Success');
             });
@@ -393,12 +387,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 url:'Delete-Item-Cart/'+$(this).data("id"),
                 type:'GET',
             }).done(function(response){
-            //console.log(response);
-            //$("#change-item-cart").empty();
-            //$("#change-item-cart").html(response);
-            // success notification
-            // Shorthand for:
-            // alertify.notify( message, 'success', [wait, callback]);
                 RenderCart(response);
                 alertify.success('Delete Item Success');
             });

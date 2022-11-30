@@ -24,12 +24,12 @@
                     <td class="qua-col first-row">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input type="text" value="{{$item['quanty']}}">
+                                <input id="quanty-item-{{$item['productInfo']->id}}" type="text" value="{{$item['quanty']}}">
                             </div>
                         </div>
                     </td>
                     <td class="total-price first-row">{{number_format($item['price'])}}₫</td>
-                    <td class="close-td first-row"><i class="ti-save"></i></td>
+                    <td class="close-td first-row"><i class="ti-save" onclick="SaveItemListCart({{$item['productInfo']->id}});"></i></td>
                     <td class="close-td first-row"><i class="ti-close" onclick="DeleteItemListCart({{$item['productInfo']->id}});"></i></td>
                     
                 </tr>
@@ -41,11 +41,13 @@
     <div class="row">
         <div class="col-lg-4 offset-lg-8">
             <div class="proceed-checkout">
+                @if(Session::has("Cart") != null)
                 <ul>
                     <li class="subtotal">Total Quanty : <span>{{Session::get('Cart')->totalQuanty}}</span></li>
                     <li class="cart-total">Total Price :<span>{{number_format(Session::get('Cart')->totalPrice)}}₫</span></li>
                 </ul>
                 <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                @endif
             </div>
         </div>
     </div>
