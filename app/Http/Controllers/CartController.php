@@ -15,7 +15,7 @@ class CartController extends Controller
     public function Index(){
         $product = DB::table('product')->get();
         return view('home',compact('product'));
-        dd($product);
+        //dd($product);
     }
 
     public function AddCart(Request $req,$id){
