@@ -86,7 +86,15 @@ class CartController extends Controller
         $newcart->UpdateItemCart($id,$quanty);
 
         $req->Session()->put('Cart',$newcart);
-
+        //dd($newcart);
         return view('list-cart');
+    }
+
+    public function api(Request $req){
+        if(Session('Cart')){
+            $data = $req->session()->all();
+        }
+        //dd($data);
+        return $data;
     }
 }

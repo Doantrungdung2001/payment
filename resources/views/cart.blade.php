@@ -62,13 +62,15 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th class="p-name">Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Save</th>
-                                    <th>Delete</th>                
+                                    <th>Hình ảnh</th>
+                                    <th class="p-name">Tên sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Kích thước</th>
+                                    <th>Màu sắc</th>
+                                    <th>Tổng</th>
+                                    <th>Lưu</th>
+                                    <th>Xóa</th>                
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,6 +88,24 @@
                                                 <input id="quanty-item-{{$item['productInfo']->id}}" type="text" value="{{$item['quanty']}}">
                                             </div>
                                         </div>
+                                    </td>
+                                    <td class="size-td first-row">
+                                        {{-- <select class="size-product">
+                                                <option>S</option>
+                                                <option>M</option>
+                                                <option>L</option>
+                                                <option>XL</option>
+                                            </select> --}}
+                                        <h5>{{$item['productInfo']->size}}</h5>
+                                    </td>
+                                    <td class="color-td first-row">
+                                        {{-- <select class="color-product">
+                                                <option>Red</option>
+                                                <option>Black</option>
+                                                <option>White</option>
+                                                <option>Blue</option>
+                                        </select> --}}
+                                        <h5>{{$item['productInfo']->color}}</h5>
                                     </td>
                                     <td class="total-price first-row">{{number_format($item['price'])}}₫</td>
                                     <td class="close-td first-row"><i class="ti-save" onclick="SaveItemListCart({{$item['productInfo']->id}});"></i></td>
@@ -105,7 +125,7 @@
                                     <li class="subtotal">Total Quanty : <span>{{Session::get('Cart')->totalQuanty}}</span></li>
                                     <li class="cart-total">Total Price :<span>{{number_format(Session::get('Cart')->totalPrice)}}₫</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <a href="{{url('/Api-Cart')}}" class="proceed-btn">Thanh toán</a>
                                 @endif
                             </div>
                         </div>

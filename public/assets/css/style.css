@@ -2637,8 +2637,8 @@ ol {
 -----------------------*/
 
 .shopping-cart {
-	padding-top: 80px;
-	padding-bottom: 60px;
+	padding-top: 100px;
+	padding-bottom: 80px;
 }
 
 .cart-table {
@@ -2647,7 +2647,7 @@ ol {
 
 .cart-table table {
 	width: 100%;
-	min-width: 480px;
+	min-width: 500px;
 	border: 1px solid #ebebeb;
 }
 
@@ -2667,7 +2667,7 @@ ol {
 
 .cart-table table tr td {
 	text-align: center;
-	padding-bottom: 34px;
+	padding-bottom: 40px;
 }
 
 .cart-table table tr td.first-row {
@@ -2675,7 +2675,7 @@ ol {
 }
 
 .cart-table table tr td.cart-pic {
-	width: 21%;
+	width: 16%;
 }
 
 .cart-table table tr td.cart-title {
@@ -2687,7 +2687,10 @@ ol {
 }
 
 .cart-table table tr td.p-price {
-	width: 16%;
+	width: 14%;
+}
+.cart-table table tr td. {
+	width: 14%;
 }
 
 .cart-table table tr td.p-price,
@@ -2698,9 +2701,14 @@ ol {
 }
 
 .cart-table table tr td.qua-col {
-	width: 16%;
+	width: 10%;
 }
-
+.cart-table table tr td.size-td {
+	width: 10%;
+}
+.cart-table table tr td.color-td {
+	width: 12%;
+}
 .cart-table table tr td.qua-col .quantity {
 	display: -webkit-box;
 	display: -ms-flexbox;
