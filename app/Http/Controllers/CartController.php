@@ -87,7 +87,7 @@ class CartController extends Controller
 
         $req->Session()->put('Cart',$newcart);
         //dd($newcart);
-        return view('list-cart');
+        return view('list-cart');   
     }
 
     public function api(Request $req){

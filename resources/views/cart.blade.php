@@ -90,21 +90,9 @@
                                         </div>
                                     </td>
                                     <td class="size-td first-row">
-                                        {{-- <select class="size-product">
-                                                <option>S</option>
-                                                <option>M</option>
-                                                <option>L</option>
-                                                <option>XL</option>
-                                            </select> --}}
                                         <h5>{{$item['productInfo']->size}}</h5>
                                     </td>
                                     <td class="color-td first-row">
-                                        {{-- <select class="color-product">
-                                                <option>Red</option>
-                                                <option>Black</option>
-                                                <option>White</option>
-                                                <option>Blue</option>
-                                        </select> --}}
                                         <h5>{{$item['productInfo']->color}}</h5>
                                     </td>
                                     <td class="total-price first-row">{{number_format($item['price'])}}₫</td>
@@ -125,7 +113,7 @@
                                     <li class="subtotal">Total Quanty : <span>{{Session::get('Cart')->totalQuanty}}</span></li>
                                     <li class="cart-total">Total Price :<span>{{number_format(Session::get('Cart')->totalPrice)}}₫</span></li>
                                 </ul>
-                                <a href="{{url('/Api-Cart')}}" class="proceed-btn">Thanh toán</a>
+                                <a href="#" class="proceed-btn">Thanh toán</a>
                                 @endif
                             </div>
                         </div>
@@ -143,9 +131,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="copyright-text">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<!--Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">
                             <img src="assets/img/payment-method.png" alt="">
@@ -201,15 +186,19 @@
                 url:'Save-Item-List-Cart/'+id+'/'+$("#quanty-item-"+id).val(),
                 type:'GET',
             }).done(function(response){
-            //console.log(response);
-            //$("#change-item-cart").empty();
-            //$("#change-item-cart").html(response);
-            // success notification
-            // Shorthand for:
-            // alertify.notify( message, 'success', [wait, callback]);
-                RenderListCart(response);
-                alertify.success('Update Item Success');
+                if($("#quanty-item-"+id).val() == 0){
+                    DeleteItemListCart(id);
+                }else{
+                    if($("#quanty-item-"+id).val() >= 100){
+                        alertify.success('Update Item fail');
+                    }else{
+                        RenderListCart(response);
+                        alertify.success('Update Item Success');
+                    }
+                }
+                
             });
+           
         }
         
         function RenderListCart(response){

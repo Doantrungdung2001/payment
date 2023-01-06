@@ -31,21 +31,9 @@
                         </div>
                     </td>
                     <td class="size-td first-row">
-                        {{-- <select class="size-product">
-                                <option>S</option>
-                                <option>M</option>
-                                <option>L</option>
-                                <option>XL</option>
-                            </select> --}}
-                            <h5>{{$item['productInfo']->size}}</h5>
+                        <h5>{{$item['productInfo']->size}}</h5>
                     </td>
                     <td class="color-td first-row">
-                        {{-- <select class="color-product">
-                                <option>Red</option>
-                                <option>Black</option>
-                                <option>White</option>
-                                <option>Blue</option>
-                        </select> --}}
                         <h5>{{$item['productInfo']->color}}</h5>
                     </td>
                     <td class="total-price first-row">{{number_format($item['price'])}}₫</td>
@@ -66,7 +54,7 @@
                     <li class="subtotal">Tổng số lượng : <span>{{Session::get('Cart')->totalQuanty}}</span></li>
                     <li class="cart-total">Tổng tiền :<span>{{number_format(Session::get('Cart')->totalPrice)}}₫</span></li>
                 </ul>
-                <a href="{{url('/Api-Cart')}}" class="proceed-btn">Thanh toán</a>
+                <a href="#" class="proceed-btn">Thanh toán</a>
                 @endif
             </div>
         </div>
