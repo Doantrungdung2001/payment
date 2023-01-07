@@ -15,59 +15,62 @@ use App\Http\Controllers\GetDataController;
 class CartController extends Controller
 {
     public function Index(){
-        // $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
-        // return view('home',['product'=> $res['data']]);
-        $product = DB::table('product')->get();
+        $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
+        return view('home',['product'=> $res['data']]);
+        // $product = DB::table('product')->get();
        
-        return view('home',compact('product'));
+        // return view('home',compact('product'));
     
     }
 
     public function AddCart(Request $req,$id){
-        // $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
-        // foreach($res['data'] as $prd){
-        //     if($prd['sub_products'] != null){
-        //         foreach($prd['sub_products'] as $item){
-        //             if($item['id'] == $id){
-        //                 $product = array();
-        //                 $product['id'] = $item['id'];
-        //                 $product['name'] = $prd['name'];
-        //                 $product['price'] = $prd['cost'];
-        //                 $product['size'] = $item['size'];
-        //                 $product['color'] = $item['color'];
-        //                 $product['image_url'] = $item['image_url'];
-        //                 //return $product['id'];
-        //                 if(Session('Cart') != null){
-        //                         $oldcart = Session('Cart');//oldcart la gio hang hien tai
-        //                 }else{
-        //                         $oldcart = null;
-        //                 }
-        //                 //Gio hang moi
-        //                 $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
-        //                 $newcart->AddCart($product,$id);
-        //                 $req->session()->put('Cart',$newcart);
-        //                 return $newcart;
-        //             }
-        //         }
-        //     }
-            
+        $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
+        foreach($res['data'] as $prd){
+            if($prd['sub_products'] != null){
+                foreach($prd['sub_products'] as $item){
+                    if($item['id'] == $id){
+                        $product = array();
+                        $product['id'] = $item['id'];
+                        $product['name'] = $prd['name'];
+                        $product['price'] = $prd['cost'];
+                        $product['size'] = $item['size'];
+                        $product['color'] = $item['color'];
+                        $product['image_url'] = $item['image_url'];
+                        //return $product['id'];
+                        if(Session('Cart') != null){
+                                $oldcart = Session('Cart');//oldcart la gio hang hien tai
+                        }else{
+                                $oldcart = null;
+                        }
+
+                        //Gio hang moi
+                        $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
+                        $newcart->AddCart($product,$id);
+                        $req->session()->put('Cart',$newcart);
+                        //return view('item');
+                        $data = session('Cart')::all;
+                        dd($data);
+                    }
+                }
+            }
+        }    
         // }
         // //return $res->json();
-        $product = DB::table('product')->where('id',$id)->first();
-        if($product != null){
-            if(Session('Cart') != null){
-                $oldcart = Session('Cart');//oldcart la gio hang hien tai
-            }else{
-                $oldcart = null;
-            }
-            //Gio hang moi
-            $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
-            $newcart->AddCart($product,$id);
+        // $product = DB::table('product')->where('id',$id)->first();
+        // if($product != null){
+        //     if(Session('Cart') != null){
+        //         $oldcart = Session('Cart');//oldcart la gio hang hien tai
+        //     }else{
+        //         $oldcart = null;
+        //     }
+        //     //Gio hang moi
+        //     $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
+        //     $newcart->AddCart($product,$id);
 
-            $req->session()->put('Cart',$newcart);
-           // dd($new_cart);   
-        }
-        return view('item');
+        //     $req->session()->put('Cart',$newcart);
+        //    // dd($new_cart);   
+        // }
+        // return view('item');
         //dd($product);
         
     }

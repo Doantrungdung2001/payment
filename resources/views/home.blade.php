@@ -110,6 +110,20 @@
                                         <div class="select-items">
                                             <table>
                                                 <tbody>
+                                                    @foreach(Session::get('Cart')->product as $item)
+                                                    <tr>
+                                                        <td class="si-pic"><img src="{{$item['productInfo']['image_url']}}" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>{{number_format($item['productInfo']['price'])}}₫ x {{$item['quanty']}}</p>
+                                                                <h6>{{$item['productInfo']['name']}}</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                            <i class="ti-close" data-id="{{$item['productInfo']['id']}}"></i>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
                                                     {{-- @foreach(Session::get('Cart')->product as $item)
                                                     <tr>
                                                         <td class="si-pic"><img src="assets/img/products/{{$item['productInfo']->img}}" alt=""></td>
@@ -124,7 +138,7 @@
                                                         </td>
                                                     </tr>
                                                     @endforeach --}}
-                                                    @foreach($product as $prd)
+                                                    {{-- @foreach($product as $prd)
                                                         @if($prd['sub_products'] != null )
                                                             @foreach($prd['sub_products'] as $item)
                                                                 <td class="si-pic"><img src="{{$item['image_url']}}" alt=""></td>
@@ -141,7 +155,7 @@
                                                             @endforeach
                                                     
                                                         @endif
-                                                    @endforeach     
+                                                    @endforeach      --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -248,10 +262,10 @@
                             @endforeach  --}}
                             @foreach($product as $prd)
                                 @if($prd['sub_products'] != null )
-                       
+                                    @foreach($prd['sub_products'] as $item)
                                     <div class="col-lg-4 col-sm-6">
                                         <div class="product-item">
-                                            @foreach($prd['sub_products'] as $item)
+                                            
                                             <div class="pi-pic">
                                                 <img src="{{$item['image_url']}}" alt="" >
                                                 <div class="sale pp-sale">Sale</div>
@@ -274,12 +288,12 @@
                                                     {{number_format($prd['cost'])}}₫
                                                 </div>
                                             </div>
-                                            @endforeach
+                                           
                                         </div>
                                     </div>                           
                                                                
                                     
-                                                    
+                                    @endforeach          
                                 @endif
                              @endforeach                          
                         </div>
