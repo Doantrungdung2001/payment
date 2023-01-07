@@ -110,7 +110,7 @@
                                         <div class="select-items">
                                             <table>
                                                 <tbody>
-                                                    @foreach(Session::get('Cart')->product as $item)
+                                                    {{-- @foreach(Session::get('Cart')->product as $item)
                                                     <tr>
                                                         <td class="si-pic"><img src="assets/img/products/{{$item['productInfo']->img}}" alt=""></td>
                                                         <td class="si-text">
@@ -123,7 +123,25 @@
                                                             <i class="ti-close" data-id="{{$item['productInfo']->id}}"></i>
                                                         </td>
                                                     </tr>
-                                                    @endforeach
+                                                    @endforeach --}}
+                                                    @foreach($product as $prd)
+                                                        @if($prd['sub_products'] != null )
+                                                            @foreach($prd['sub_products'] as $item)
+                                                                <td class="si-pic"><img src="{{$item['image_url']}}" alt=""></td>
+                                                                <td class="si-text">
+                                                                    <div class="product-selected">
+                                                                        <p>{{number_format($prd['cost'])}}₫</p>
+                                                                        <h6>{{$prd['name']}}</h6>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="si-close">
+                                                                    <i class="ti-close" data-id="{{$item['id']}}"></i>
+                                                                </td>
+                                                               
+                                                            @endforeach
+                                                    
+                                                        @endif
+                                                    @endforeach     
                                                 </tbody>
                                             </table>
                                         </div>
@@ -201,11 +219,11 @@
                 <div class="col-lg-12 order-1 order-lg-2">
                     <div class="product-list">
                         <div class="row">
-                            @foreach($product as $prd)
+                            {{-- @foreach($product as $prd)
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="assets/img/products/{{$prd->img}}" alt="">
+                                        <img src="{{$item['image_url']}}" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -227,7 +245,43 @@
                                     </div>
                                 </div>
                             </div>  
-                            @endforeach                         
+                            @endforeach  --}}
+                            @foreach($product as $prd)
+                                @if($prd['sub_products'] != null )
+                       
+                                    <div class="col-lg-4 col-sm-6">
+                                        <div class="product-item">
+                                            @foreach($prd['sub_products'] as $item)
+                                            <div class="pi-pic">
+                                                <img src="{{$item['image_url']}}" alt="" >
+                                                <div class="sale pp-sale">Sale</div>
+                                                <div class="icon">
+                                                    <i class="icon_heart_alt"></i>
+                                                </div>
+                                                <ul>
+                                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                    <li class="quick-view" ><a onclick="AddCart({{$item['id']}})" href="javascript:">+ Add Cart</a></li>
+                                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="pi-text">
+                                                <div class="catagory-name">Towel</div>
+                                                <a href="#">
+                                                    <h5>{{$prd['name']}}</h5>
+                                                </a>
+                                                <div class="product-price">
+                                                    {{number_format($prd['cost'])}}₫
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>                           
+                                                               
+                                    
+                                                    
+                                @endif
+                             @endforeach                          
                         </div>
                     </div>
                     </div>
