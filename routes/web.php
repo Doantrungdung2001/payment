@@ -19,7 +19,10 @@ Route::get('/Cart', 'App\Http\Controllers\CartController@ViewCart');
 Route::get('/Delete-Item-List-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemListCart');
 Route::get('/Save-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartController@SaveItemListCart');
 Route::get('/Update-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartController@UpdateItemListCart');
-Route::get('/Api-Cart', 'App\Http\Controllers\CartController@Api');
+
+//API
+Route::get('/Api/Product-Cart', 'App\Http\Controllers\CartController@product_cart');
+Route::get('/Api/totalQuanty-Product-Cart', 'App\Http\Controllers\CartController@total_product_cart');
 /*
 Route::get('/home', function () {
     return view('home');

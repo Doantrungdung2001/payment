@@ -155,7 +155,7 @@
                                                             @endforeach
                                                     
                                                         @endif
-                                                    @endforeach      --}}
+                                                    @endforeach--}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -439,13 +439,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
     <script>
+
         function AddCart(id){
             $.ajax({
                 url:'AddCart/'+id,
                 type:'GET',
-            }).done(function(response){
-                RenderCart(response);
-                alertify.success('Add Cart Success');
+                
+                success:function(response){
+                    RenderCart(response);
+                    alertify.success('Thêm sản phẩm thành công');
+                },
+                error:function(response , error){
+                    // handleException(request , message , error);
+                    console.log(error);
+                    console.log(response);
+                }
             });
         }
             //console.log(id);
@@ -456,7 +464,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 type:'GET',
             }).done(function(response){
                 RenderCart(response);
-                alertify.success('Delete Item Success');
+                // $("#change-item-cart").empty();
+                // $("#change-item-cart").html(response);
+                alertify.success('Xóa sản phẩm thành công');
             });
         });
         

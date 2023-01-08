@@ -203,7 +203,7 @@
             }).done(function(response){
             
                 RenderListCart(response);
-                alertify.success('Delete Item Success');
+                alertify.success('Xóa sẩn phẩm thành công');
             });
         }
         
@@ -214,14 +214,15 @@
                 url:'Save-Item-List-Cart/'+id+'/'+$("#quanty-item-"+id).val(),
                 type:'GET',
             }).done(function(response){
+                //console.log($("#quanty-item-"+id).val());
                 if($("#quanty-item-"+id).val() == 0){
                     DeleteItemListCart(id);
                 }else{
                     if($("#quanty-item-"+id).val() >= 100){
-                        alertify.success('Update Item fail');
+                        alertify.success('Cập nhật thất bại');
                     }else{
                         RenderListCart(response);
-                        alertify.success('Update Item Success');
+                        alertify.success('Cập nhật thành công');
                     }
                 }
                 

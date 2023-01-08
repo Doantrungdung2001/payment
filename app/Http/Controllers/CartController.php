@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Session;
 use App\Http\Controllers\GetDataController;
-
 class CartController extends Controller
 {
     public function Index(){
@@ -47,13 +46,12 @@ class CartController extends Controller
                         $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
                         $newcart->AddCart($product,$id);
                         $req->session()->put('Cart',$newcart);
-                        //return view('item');
-                        $data = session('Cart')::all;
-                        dd($data);
+                        
                     }
                 }
             }
-        }    
+        }
+        return view('item');    
         // }
         // //return $res->json();
         // $product = DB::table('product')->where('id',$id)->first();
@@ -127,11 +125,23 @@ class CartController extends Controller
         return view('list-cart');   
     }
 
-    public function api(Request $req){
+    public function product_cart(Request $req){
         if(Session('Cart')){
-            $data = $req->session()->all();
+            $value = $req->session()->get('Cart');
         }
-        //dd($data);
-        return $data;
+        // return $value;
+        return response([
+            'data' => $value
+        ]);
+    }
+    
+    public function total_product_cart(Request $req){
+        if(Session('Cart')){
+            $value = $req->session()->get('Cart');
+        }
+        // return $value->totalQuanty;
+        return response([
+            'toatalQuanty' => $value->totalQuanty
+        ]);
     }
 }
