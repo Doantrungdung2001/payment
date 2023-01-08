@@ -443,19 +443,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         function AddCart(id){
             $.ajax({
                 url:'AddCart/'+id,
-                type:'GET',
-            }).done(function(response){
-                RenderCart(response); 
-                alertify.success('Thêm sản phẩm thành công');  
-                // success:function(response){
-                //     RenderCart(response);
-                //     alertify.success('Thêm sản phẩm thành công');
-                // },
-                // error:function(response , error){
-                //     // handleException(request , message , error);
-                //     console.log(error);
-                //     console.log(response);
-                // }
+                type:'GET', 
+                
+                success:function(response){
+                    RenderCart(response);
+                    alertify.success('Thêm sản phẩm thành công');
+                },
+                error:function(response , error){
+                    // handleException(request , message , error);
+                    console.log(error);
+                    console.log(response);
+                }
             });
         }
             //console.log(id);
