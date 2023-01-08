@@ -1,19 +1,18 @@
 <?php
 namespace App\Models;
 class Cart{
-    public $product = null;
+    public $product;
     public $totalPrice = 0;
     public $totalQuanty =0;
-
+    public $id_user =0;
     public function __construct($cart){
         if($cart){
             $this->product = $cart->product;
             $this->totalPrice = $cart->totalPrice;
             $this->totalQuanty = $cart->totalQuanty;
+            $this->id_user = $cart->id_user;
         } 
     }
-    
-        
     
     public function AddCart($product , $id){
         $newProduct = ['quanty'=>0,'price'=>$product['price'],'productInfo'=>$product];
@@ -22,12 +21,13 @@ class Cart{
                 $newProduct =$this->product[$id];
             }
         }
+        
         $newProduct['quanty']++;
         $newProduct['price'] = $newProduct['quanty'] * $product['price'];
         $this->product[$id] = $newProduct;
         $this->totalPrice += $product['price'];
         $this->totalQuanty++;
-        
+        $this->id_user = 2;
         // $newProduct = ['quanty'=>0,'price'=>$product->price,'productInfo'=>$product];
         // if($this->product){
         //     if(array_key_exists($id,$this->product)){

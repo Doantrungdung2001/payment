@@ -28,13 +28,21 @@ class CartController extends Controller
             if($prd['sub_products'] != null){
                 foreach($prd['sub_products'] as $item){
                     if($item['id'] == $id){
-                        $product = array();
-                        $product['id'] = $item['id'];
-                        $product['name'] = $prd['name'];
-                        $product['price'] = $prd['cost'];
-                        $product['size'] = $item['size'];
-                        $product['color'] = $item['color'];
-                        $product['image_url'] = $item['image_url'];
+                        $product = array(
+                            'id' =>$item['id'],
+                            'name'=> $prd['name'],
+                            'price'=>$prd['cost'],
+                            'size'=>$item['size'],
+                            'color'=> $item['color'],
+                            'image_url'=>$item['image_url']
+                        );
+                        // $product = array();
+                        // $product['id'] = $item['id'];
+                        // $product['name'] = $prd['name'];
+                        // $product['price'] = $prd['cost'];
+                        // $product['size'] = $item['size'];
+                        // $product['color'] = $item['color'];
+                        // $product['image_url'] = $item['image_url'];
                         //return $product['id'];
                         if(Session('Cart') != null){
                                 $oldcart = Session('Cart');//oldcart la gio hang hien tai
@@ -46,6 +54,7 @@ class CartController extends Controller
                         $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
                         $newcart->AddCart($product,$id);
                         $req->session()->put('Cart',$newcart);
+                        //$req->session()->flush();
                         
                     }
                 }
@@ -127,14 +136,25 @@ class CartController extends Controller
 
     public function product_cart(Request $req){
         if(Session('Cart')){
-            $value = $req->session()->get('Cart');
+            $data = [];
+            foreach (Session::get('Cart')->product as $item) {
+                array_push($data,$item);
+            }
+            $id_user = Session::get('Cart')->id_user;
+            $totalPrice = Session::get('Cart')->totalPrice;
+            $totalQuanty = Session::get('Cart')->totalQuanty;
         }
-        // return $value;
-        return response([
-            'data' => $value
-        ]);
+        $product = ['Item'=>$data,
+                    'toatalQuanty' => $totalQuanty,
+                    'toatalPrice' => $totalPrice,
+                    'id_user' => $id_user];
+        return $product['Item'];
+        // return response([
+        //     'message' => 'OK'
+        //     'data' => $product
+        // ]);
+         
     }
-    
     public function total_product_cart(Request $req){
         if(Session('Cart')){
             $value = $req->session()->get('Cart');
