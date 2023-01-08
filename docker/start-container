@@ -9,7 +9,7 @@ if [ ! -d /.composer ]; then
 fi
 
 npm install
-composer install
+composer update
 php artisan migrate
 chmod -R ugo+rw /.composer
 
