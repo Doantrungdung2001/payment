@@ -148,7 +148,7 @@ class CartController extends Controller
                     'toatalQuanty' => $totalQuanty,
                     'toatalPrice' => $totalPrice,
                     'id_user' => $id_user];
-        return $product['Item'];
+        return $product;
         // return response([
         //     'message' => 'OK'
         //     'data' => $product

@@ -444,16 +444,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             $.ajax({
                 url:'AddCart/'+id,
                 type:'GET',
-                
-                success:function(response){
-                    RenderCart(response);
-                    alertify.success('Thêm sản phẩm thành công');
-                },
-                error:function(response , error){
-                    // handleException(request , message , error);
-                    console.log(error);
-                    console.log(response);
-                }
+            }).done(function(response){
+                RenderCart(response); 
+                alertify.success('Thêm sản phẩm thành công');  
+                // success:function(response){
+                //     RenderCart(response);
+                //     alertify.success('Thêm sản phẩm thành công');
+                // },
+                // error:function(response , error){
+                //     // handleException(request , message , error);
+                //     console.log(error);
+                //     console.log(response);
+                // }
             });
         }
             //console.log(id);
