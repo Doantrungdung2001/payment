@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+use Illuminate\Support\Facades\DB;
 class Cart{
     public $product;
     public $totalPrice = 0;
@@ -14,8 +15,8 @@ class Cart{
         } 
     }
     
-    public function AddCart($product , $id){
-        $newProduct = ['quanty'=>0,'price'=>$product['price'],'productInfo'=>$product];
+    public function AddCart($productInfor , $id){
+        $newProduct = ['quanty'=>0,'price'=>$productInfor['price'],'productInfo'=>$productInfor];
         if($this->product){
             if(array_key_exists($id,$this->product)){
                 $newProduct =$this->product[$id];
@@ -23,24 +24,17 @@ class Cart{
         }
         
         $newProduct['quanty']++;
-        $newProduct['price'] = $newProduct['quanty'] * $product['price'];
+        $newProduct['price'] = $newProduct['quanty'] * $productInfor['price'];
         $this->product[$id] = $newProduct;
-        $this->totalPrice += $product['price'];
+        $this->totalPrice += $productInfor['price'];
         $this->totalQuanty++;
         $this->id_user = 2;
-        // $newProduct = ['quanty'=>0,'price'=>$product->price,'productInfo'=>$product];
-        // if($this->product){
-        //     if(array_key_exists($id,$this->product)){
-        //         $newProduct =$this->product[$id];
-        //     }
-        // }
-        // $newProduct['quanty']++;
-        // $newProduct['price'] = $newProduct['quanty'] * $product->price;
-        // $this->product[$id] = $newProduct;
-        // $this->totalPrice += $product->price;
-        // $this->totalQuanty++;
+        
+       
+        DB::insert('INSERT into test_cart (id_user, productInfor,totalQuanty,totalPrice) 
+        values (?, ?, ?, ?)', [$this->id_user,json_encode($this->product),$this->totalQuanty,$this->totalPrice]);
     }
-
+    
     public function DeleteItemCart($id){
         $this->totalQuanty -=$this->product[$id]['quanty'];
         $this->totalPrice -= $this->product[$id]['price'];
@@ -49,7 +43,7 @@ class Cart{
 
     public function UpdateItemCart($id ,$quanty){
         # code...
-        $this->totalQuanty -= $this->product[$id]['quanty'];
+        $this->totalQuanty -= $this->product[$id]['quanty'];    
         $this->totalPrice -= $this->product[$id]['price'];
         
         $this->product[$id]['quanty'] = $quanty;

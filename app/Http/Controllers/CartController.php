@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Cart;
+use App\Models\Shopping;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -28,58 +29,46 @@ class CartController extends Controller
             if($prd['sub_products'] != null){
                 foreach($prd['sub_products'] as $item){
                     if($item['id'] == $id){
-                        $product = array(
+                        $product = [
                             'id' =>$item['id'],
                             'name'=> $prd['name'],
                             'price'=>$prd['cost'],
                             'size'=>$item['size'],
                             'color'=> $item['color'],
-                            'image_url'=>$item['image_url']
-                        );
-                        // $product = array();
-                        // $product['id'] = $item['id'];
-                        // $product['name'] = $prd['name'];
-                        // $product['price'] = $prd['cost'];
-                        // $product['size'] = $item['size'];
-                        // $product['color'] = $item['color'];
-                        // $product['image_url'] = $item['image_url'];
-                        //return $product['id'];
-                        if(Session('Cart') != null){
-                                $oldcart = Session('Cart');//oldcart la gio hang hien tai
-                        }else{
-                                $oldcart = null;
-                        }
-
-                        //Gio hang moi
-                        $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
-                        $newcart->AddCart($product,$id);
-                        $req->session()->put('Cart',$newcart);
-                        //$req->session()->flush();
+                            'image_url'=>$item['image_url'],
+                            'status' => 1
+                        ];
+                        // $id_user = $req->id;
+                        $id_user = 3;
+                        // $oldcart = null;
+                        // $newcart = new Shopping($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
+                        //$newcart->AddCart($product,$id,$id_user);
                         
+                       
+                        $table_cart = DB::table('shoppings')->where('id_user',$id_user)->get();
+                        foreach($table_cart as $key){
+                            return $key;                
+                        }
+                        // foreach($table_cart as $key){
+                        //     $oldcart = null;
+                        //     $newcart = new CartTest($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
+                        //     $newcart->UpdateAddCart($product,$id);
+                        //     //return $key->productInfor;                
+                        // }
+                        // if($table_cart != null){
+                        //         $oldcart = $table_cart;//oldcart la gio hang hien tai
+                        // }else{
+                        //         $oldcart = null;
+                        // }    
+                        // $oldcart = null;
+                        // // // Gio hang moi                         
+                        // dd($table_cart);                      
                     }
                 }
             }
         }
-        return view('item');    
-        // }
-        // //return $res->json();
-        // $product = DB::table('product')->where('id',$id)->first();
-        // if($product != null){
-        //     if(Session('Cart') != null){
-        //         $oldcart = Session('Cart');//oldcart la gio hang hien tai
-        //     }else{
-        //         $oldcart = null;
-        //     }
-        //     //Gio hang moi
-        //     $newcart = new Cart($oldcart); //tao mot doi tuong gio hang moi tu lop Cart    
-        //     $newcart->AddCart($product,$id);
-
-        //     $req->session()->put('Cart',$newcart);
-        //    // dd($new_cart);   
-        // }
-        // return view('item');
-        //dd($product);
-        
+        //return view('item'); 
+        //return $table_cart;     
     }
 
     public function DeleteItemCart(Request $req,$id){
