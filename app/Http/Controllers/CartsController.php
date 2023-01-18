@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\Http;
 
 class CartsController extends Controller
 {
+    public function Index(){
+        $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
+        return view('home',['product'=> $res['data']]);
+        // $product = DB::table('product')->get();
+       
+        // return view('home',compact('product'));
+    
+    }
+    public function SameProduct(){
+        $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
+        return view('same-product',['product'=> $res['data']]);
+        // $product = DB::table('product')->get();
+       
+        // return view('home',compact('product'));
+    
+    }
     public function AddToCart(Request $req,$id){
         $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
         // $id_user = $req->id;

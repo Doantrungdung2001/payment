@@ -49,8 +49,8 @@
         <div class="col-lg-4 offset-lg-8">
             <div class="proceed-checkout">
                 <ul>
-                    <li class="subtotal">Total Quanty : <span>{{$totalQuanty}}</span></li>
-                    <li class="cart-total">Total Price :<span>{{number_format($totalPrice)}}₫</span></li>
+                    <li class="subtotal">Tổng số lượng : <span>{{$totalQuanty}}</span></li>
+                    <li class="cart-total">Tổng giá :<span>{{number_format($totalPrice)}}₫</span></li>
                 </ul>
                 <a href="#" class="proceed-btn">Đặt hàng</a>
             </div>

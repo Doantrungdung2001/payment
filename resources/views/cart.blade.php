@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+
     <style>
         .cart-pic img{
             width: 100px;
@@ -44,7 +48,6 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
                         <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
-                        <a href="./shop.html">Shop</a>
                         <span>Shopping Cart</span>
                     </div>
                 </div>
@@ -52,6 +55,19 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
+
+    <div class="nav-item">
+        <div class="container">
+            <nav class="nav-menu mobile-menu">
+                <ul>
+                    <li><a href="{{url('/')}}">Giỏ hàng</a></li>
+                    <li><a href="{{url('/same-product')}}">Sản phẩm tương tự</a></li>
+                    <li><a href="#">Mua lại hàng</a></li>
+                </ul>
+            </nav>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </div>
 
     <!-- Shopping Cart Section Begin -->
     <section class="shopping-cart spad">
@@ -107,8 +123,8 @@
                         <div class="col-lg-4 offset-lg-8">
                             <div class="proceed-checkout">
                                 <ul>
-                                    <li class="subtotal">Total Quanty : <span>{{$totalQuanty}}</span></li>
-                                    <li class="cart-total">Total Price :<span>{{number_format($totalPrice)}}₫</span></li>
+                                    <li class="subtotal">Tổng số lượng : <span>{{$totalQuanty}}</span></li>
+                                    <li class="cart-total">Tổng giá :<span>{{number_format($totalPrice)}}₫</span></li>
                                 </ul>
                                 <a href="#" class="proceed-btn">Đặt hàng</a>
                             </div>
@@ -149,6 +165,7 @@
     <script src="assets/js/jquery.slicknav.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script>
+
 
      <!-- JavaScript -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>

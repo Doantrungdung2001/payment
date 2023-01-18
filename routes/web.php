@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'App\Http\Controllers\CartController@Index');
+Route::get('/', 'App\Http\Controllers\CartsController@Index');
 Route::get('/AddtoCart/{id}', 'App\Http\Controllers\CartsController@AddToCart');
 Route::get('/Delete-Item-Cart/{id}', 'App\Http\Controllers\CartsController@DeleteItemToCart');
 // Route::get('/Delete-Item-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart');
 // Route::get('/Cart', 'App\Http\Controllers\CartController@ViewCart');
 Route::get('/Cart', 'App\Http\Controllers\CartsController@ViewtoCart');
+Route::get('/same-product', 'App\Http\Controllers\CartsController@SameProduct');
 Route::get('/Delete-Item-List-Cart/{id}', 'App\Http\Controllers\CartsController@DeleteItemListToCart');
 // Route::get('/Delete-Item-List-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemListCart');
 Route::get('/Save-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartsController@SaveItemListToCart');
@@ -27,12 +28,11 @@ Route::get('/Update-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartCon
 //API
 Route::get('/Api/Product-Cart', 'App\Http\Controllers\CartController@product_cart');
 Route::get('/Api/totalQuanty-Product-Cart', 'App\Http\Controllers\CartController@total_product_cart');
-/*
-Route::get('/home', function () {
-    return view('home');
-});
-*/
-Route::get('/cart', function () {
-    return view('cart');
-});
 
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
+
+// Route::get('/same-product',function(){
+//     return view('same-product');
+// });
