@@ -17,7 +17,8 @@ class ItemCart extends Model
         'size',
         'color',
         'price',
-        'image-url',
+        'total_price',
+        'image_url',
         'status',
     ];
 }

@@ -94,7 +94,7 @@
                                     <td class="color-td first-row">
                                         <h5>{{$item->color}}</h5>
                                     </td>
-                                    <td class="total-price first-row">{{number_format($item->price)}}₫</td>
+                                    <td class="total-price first-row">{{number_format($item->total_price)}}₫</td>
                                     <td class="close-td first-row"><i class="ti-save" onclick="SaveItemListCart({{$item->id_product}});"></i></td>
                                     <td class="close-td first-row"><i class="ti-close" onclick="DeleteItemListCart({{$item->id_product}});"></i></td>
                                     
@@ -107,10 +107,10 @@
                         <div class="col-lg-4 offset-lg-8">
                             <div class="proceed-checkout">
                                 <ul>
-                                    <li class="subtotal">Total Quanty : <span>0</span></li>
-                                    <li class="cart-total">Total Price :<span>0₫</span></li>
+                                    <li class="subtotal">Total Quanty : <span>{{$totalQuanty}}</span></li>
+                                    <li class="cart-total">Total Price :<span>{{number_format($totalPrice)}}₫</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">Thanh toán</a>
+                                <a href="#" class="proceed-btn">Đặt hàng</a>
                             </div>
                         </div>
                     </div>
