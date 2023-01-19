@@ -55,7 +55,7 @@
                 <ul>
                     <li><a href="{{url('/Cart')}}">Giỏ hàng</a></li>
                     <li><a href="{{url('/same-product')}}">Sản phẩm tương tự</a></li>
-                    <li><a href="#">Mua lại hàng</a></li>
+                    <li><a href="{{url('/buy-again')}}">Mua lại hàng</a></li>
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>

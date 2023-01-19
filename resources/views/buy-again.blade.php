@@ -29,7 +29,7 @@
 
     <style>
         .cart-pic img{
-            width: 100px;
+            width: 100%;
         }
     </style>
 </head>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                        <a href=""><i class="fa fa-home"></i> Home</a>
                         <span>Shopping Cart</span>
                     </div>
                 </div>
@@ -78,57 +78,50 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Hình ảnh</th>
-                                    <th class="p-name">Tên sản phẩm</th>
-                                    <th>Giá</th>
+                                    {{-- <th>Hình ảnh</th>
+                                    <th class=""></th> 
+                                    {{-- <th>Giá</th>
                                     <th>Số lượng</th>
                                     <th>Kích thước</th>
                                     <th>Màu sắc</th>
                                     <th>Tổng</th>
-                                    <th>Lưu</th>
-                                    <th>Xóa</th>                
+                                    <th>Lưu</th> --}}
+                                    {{-- <th>Xóa</th>--}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($cart as $item)
                                 <tr>
-                                    <td class="cart-pic first-row"><img src="{{$item->image_url}}" alt=""></td>
-                                    <td class="cart-title first-row">
-                                        <h5>{{$item->name}}</h5>
-                                    </td>
-                                    <td class="p-price first-row">{{number_format($item->price)}}₫</td>
-                                    <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input id="quanty-item-{{$item->id_product}}" type="text" value="{{$item->quanty}}">
+                                    <td class="cart-pic-buy-again second-row"><img src="{{$item->image_url}}" alt=""></td>
+                                    <td class="cart-title second-row">
+                                        <div class="row2">
+                                            <div class="col-lg-12 offset-lg-24">
+                                                <div class="proceed-checkout">
+                                                    <ul>
+                                                        <li class="subtotal">Tên sản phẩm  : <span>{{$item->name}}</span></li>
+                                                        <li class="cart-total">Giá :<span>{{number_format($item->price)}}₫</span></li>
+                                                        <li class="cart-total">Giá :<span>{{number_format($item->price)}}₫</span></li>
+                                                        <li class="cart-total">Giá :<span>{{number_format($item->price)}}₫</span></li>
+                                                    </ul>
+                                                    
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row2">
+                                            <div class="col-lg-4 offset-lg-8">
+                                                <div class="proceed-checkout">
+                                                    <a href="#" class="proceed-btn">Mua lại hàng</a>
+                                                    <a href="#" class="proceed-btn-2">Xóa</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </td>
-                                    <td class="size-td first-row">
-                                        <h5>{{$item->size}}</h5>
-                                    </td>
-                                    <td class="color-td first-row">
-                                        <h5>{{$item->color}}</h5>
-                                    </td>
-                                    <td class="total-price first-row">{{number_format($item->total_price)}}₫</td>
-                                    <td class="close-td first-row"><i class="ti-save" onclick="SaveItemListCart({{$item->id_product}});"></i></td>
-                                    <td class="close-td first-row"><i class="ti-close" onclick="DeleteItemListCart({{$item->id_product}});"></i></td>
                                     
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 offset-lg-8">
-                            <div class="proceed-checkout">
-                                <ul>
-                                    <li class="subtotal">Tổng số lượng : <span>{{$totalQuanty}}</span></li>
-                                    <li class="cart-total">Tổng giá :<span>{{number_format($totalPrice)}}₫</span></li>
-                                </ul>
-                                <a href="#" class="proceed-btn">Đặt hàng</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

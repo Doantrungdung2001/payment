@@ -2674,8 +2674,15 @@ ol {
 	padding-top: 30px;
 }
 
+.cart-table table tr td.second-row {
+	padding-top: 30px;
+}
 .cart-table table tr td.cart-pic {
 	width: 16%;
+}
+
+.cart-table table tr td.cart-pic-buy-again {
+	width: 20%;
 }
 
 .cart-table table tr td.cart-title {
@@ -2827,6 +2834,15 @@ ol {
 	padding-bottom: 20px;
 }
 
+.proceed-checkout-buy ul {
+	border: 2px solid #ebebeb;
+	background: #f3f3f3;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+}
+
 .proceed-checkout ul li {
 	list-style: none;
 	font-size: 16px;
@@ -2864,6 +2880,17 @@ ol {
 	font-weight: 700;
 	color: #ffffff;
 	background: #252525;
+	text-transform: uppercase;
+	padding: 15px 25px 14px 25px;
+	display: block;
+	text-align: center;
+}
+
+.proceed-checkout .proceed-btn-2 {
+	font-size: 14px;
+	font-weight: 700;
+	color: #ffffff;
+	background:#AA0000;
 	text-transform: uppercase;
 	padding: 15px 25px 14px 25px;
 	display: block;
