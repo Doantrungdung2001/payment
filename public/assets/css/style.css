@@ -2858,7 +2858,12 @@ ol {
 	border-bottom: 1px solid #ffffff;
 	padding-bottom: 14px;
 }
-
+.proceed-checkout ul li.subtotal-1 {
+	font-weight: 500;
+	text-transform: capitalize;
+	border-bottom: 1px solid #ffffff;
+	padding-bottom: 18px;
+}
 .proceed-checkout ul li.subtotal span {
 	font-weight: 700;
 }

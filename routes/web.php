@@ -25,3 +25,6 @@ Route::get('/Update-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartCon
 //API
 Route::get('/Api/Product-Cart', 'App\Http\Controllers\CartController@product_cart');
 Route::get('/Api/totalQuanty-Product-Cart', 'App\Http\Controllers\CartController@total_product_cart');
+
+//Invoice
+Route::get('/create-invoice','App\Http\Controllers\InvoiceController@Invoice');

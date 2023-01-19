@@ -12,20 +12,20 @@ class CartsController extends Controller
     public function Index(){
         $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
         return view('home',['product'=> $res['data']]);
-        // $product = DB::table('product')->get();
-       
-        // return view('home',compact('product'));
     
     }
+
     public function SameProduct(){
         $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
         return view('same-product',['product'=> $res['data']]);
     
     }
+
     public function BuyAgain(){
         $cart = DB::table('item_carts')->where('status',1)->get();
         return view('buy-again',compact('cart'));   
     }
+
     public function AddToCart(Request $req,$id){
         $res = Http::get('https://p01-product-api-production.up.railway.app/api/user/products');
         // $id_user = $req->id;
@@ -63,8 +63,6 @@ class CartsController extends Controller
                 }
             }
         }
-        // $now_quanty = ItemCart::where('id_user',$id_user)->where('id_product',$id)->first();
-        // return $now_quanty->quanty;
     }
 
     public function ViewToCart(){
