@@ -82,7 +82,7 @@
                                                 </div>
                                                 <ul>
                                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                    <li class="quick-view" ><a onclick="AddCart({{$item['id']}})" href="javascript:">+ Add Cart</a></li>
+                                                    <li class="quick-view" ><a onclick="AddCart({{$item['id']}})" href="javascript:">Thêm giỏ hàng</a></li>
                                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                                 </ul>
                                             </div>
