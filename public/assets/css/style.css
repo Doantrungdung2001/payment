@@ -2901,7 +2901,16 @@ ol {
 	display: block;
 	text-align: center;
 }
-
+.proceed-checkout .proceed-btn-3 {
+	font-size: 14px;
+	font-weight: 700;
+	color: #ffffff;
+	background:wheat;
+	text-transform: uppercase;
+	padding: 15px 20px 14px 20px;
+	display: block;
+	text-align: center;
+}
 /*---------------------
   Check Out
 -----------------------*/

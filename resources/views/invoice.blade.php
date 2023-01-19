@@ -109,10 +109,16 @@
                         <div class="col-lg-4 offset-lg-8">
                             <div class="proceed-checkout">
                                 <ul>
-                                    <li class="subtotal">Tổng số lượng : <span>{{$item->quanty}}</span></li>
-                                    <li class="cart-total">Tổng giá :<span>{{number_format($item->price)}}₫</span></li>
+                                    <li class="subtotal">Tổng số lượng : <span>{{$totalQuanty}}</span></li>
+                                    <li class="cart-total">Tổng giá :<span>{{number_format($totalPrice)}}₫</span></li>
+                                    @php
+                                        $vn_to_usd = $totalPrice/23083;
+                                    @endphp
                                 </ul>
-                                <a href="#" class="proceed-btn">Thanh toán</a>
+                                <a href="{{url('/VN-pay-payment')}}" class="proceed-btn">Thanh toán VNpay</a>
+                                <div id="paypal-button" class="proceed-btn-3"></div>
+                                <input type="hidden" id="vn_to_usd" value="{{round($vn_to_usd,2)}}">
+                                
                             </div>
                         </div>
                     </div>
@@ -164,6 +170,50 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        var usd = document.getElementById('vn_to_usd').value;
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AVqDaxF9UvIaHkU3RklDxiUj1XftODJbTuHgnEZUoUoe2HQDHw7XSssaISb0rM7vZz5IWCXWSu1wMn4K',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                amount: {
+                    total: `${usd}`,
+                    currency: 'USD'
+                }
+                }]
+            });
+            },
+            // Execute the payment
+            onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                // Show a confirmation message to the buyer
+                window.alert('Thanh toán thành công!');
+                window.alert('Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!');
+            });
+            }
+        }, '#paypal-button');
+
+    </script>
 
 </body>
 

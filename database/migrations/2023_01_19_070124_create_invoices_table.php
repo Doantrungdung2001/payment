@@ -23,8 +23,6 @@ return new class extends Migration
             $table->string('color');
             $table->integer('price');
             $table->integer('total_price');
-            $table->integer('total_cost');
-            $table->integer('total_quanty');
             $table->string('image_url');
             $table->string('status');
             $table->timestamps();

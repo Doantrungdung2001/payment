@@ -52,7 +52,7 @@
                     <li class="subtotal">Tổng số lượng : <span>{{$totalQuanty}}</span></li>
                     <li class="cart-total">Tổng giá :<span>{{number_format($totalPrice)}}₫</span></li>
                 </ul>
-                <a href="#" class="proceed-btn">Đặt hàng</a>
+                <a href="{{url('/create-invoice')}}" class="proceed-btn">Đặt hàng</a>
             </div>
         </div>
     </div>

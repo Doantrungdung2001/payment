@@ -18,8 +18,6 @@ class invoice extends Model
         'color',
         'price',
         'total_price',
-        'total_cost',
-        'total_quanty',
         'image_url',
         'status',
     ];
