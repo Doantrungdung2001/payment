@@ -15,15 +15,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\CartsController@Index');
 Route::get('/AddtoCart/{id}', 'App\Http\Controllers\CartsController@AddToCart');
 Route::get('/Delete-Item-Cart/{id}', 'App\Http\Controllers\CartsController@DeleteItemToCart');
-// Route::get('/Delete-Item-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart');
-// Route::get('/Cart', 'App\Http\Controllers\CartController@ViewCart');
 Route::get('/Cart', 'App\Http\Controllers\CartsController@ViewtoCart');
 Route::get('/same-product', 'App\Http\Controllers\CartsController@SameProduct');
 Route::get('/buy-again', 'App\Http\Controllers\CartsController@BuyAgain');
 Route::get('/Delete-Item-List-Cart/{id}', 'App\Http\Controllers\CartsController@DeleteItemListToCart');
-// Route::get('/Delete-Item-List-Cart/{id}', 'App\Http\Controllers\CartController@DeleteItemListCart');
 Route::get('/Save-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartsController@SaveItemListToCart');
-// Route::get('/Save-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartsController@SaveItemListToCart');
 Route::get('/Update-Item-List-Cart/{id}/{quanty}', 'App\Http\Controllers\CartController@UpdateItemListCart');
 
 //API
