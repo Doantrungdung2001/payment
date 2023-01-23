@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PaymentController extends Controller
 {
     //
     public function DonePayment(){
-        return view('transaction');
+        $cart = DB::table('item_carts')->where('status',1)->get();
+
+        $totalQuanty = DB::table('item_carts')->where('status',1)->sum('quanty');
+        $totalPrice = DB::table('item_carts')->where('status',1)->sum('total_price');
+        return view('invoice-payment',compact('cart'),compact('totalQuanty','totalPrice'));
     }
     // public function VnpayPayment(){
     //     error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
