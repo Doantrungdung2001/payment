@@ -209,6 +209,8 @@
                 // Show a confirmation message to the buyer
                 window.alert('Thanh toán thành công!');
                 window.alert('Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!');
+                window.location.replace('/Sucess-payment');
+
             });
             }
         }, '#paypal-button');
