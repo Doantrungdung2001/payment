@@ -125,6 +125,10 @@
                         </table>
                     </div>
                 </div>
+                <form action="{{url('/Cart')}}" method="get">
+                    @csrf
+                    <button type="submit">ok</button>
+                </form>
             </div>
             <div class="card-footer bg-white">
                 <p class="mb-0">Shop Thầy Hóa, Hai Bà Trưng, Hà Nội</p>

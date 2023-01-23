@@ -32,5 +32,5 @@ Route::get('/payment','App\Http\Controllers\InvoiceController@SaveInvoice');
 
 //Payment
 Route::get('/Sucess-payment','App\Http\Controllers\PaymentController@DonePayment');
-// Route::get('/VN-pay-payment','App\Http\Controllers\PaymentController@VnpayPayment');
+Route::post('/VN-pay-payment','App\Http\Controllers\PaymentController@VnpayPayment');
 Route::get('/Paypal-payment','App\Http\Controllers\PaymentController@PaypalPayment');

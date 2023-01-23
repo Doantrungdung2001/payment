@@ -115,7 +115,15 @@
                                         $vn_to_usd = $totalPrice/23083;
                                     @endphp
                                 </ul>
-                                <a href="{{url('/VN-pay-payment')}}" class="proceed-btn">Thanh toán VNpay</a>
+                                <form action="{{url('/VN-pay-payment')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="totalPrice" value="{{$totalPrice}}">
+                                    <button type="submit" class="proceed-btn" name="redirect">Thanh toán VNpay</button>
+                                </form>
+                                <form action="{{url('/Sucess-payment')}}" method="get">
+                                    @csrf
+                                    <button type="submit" class="proceed-btn" name="redirect">Thanh toán nhan hang</button>
+                                </form>
                                 <div id="paypal-button" class="proceed-btn-3"></div>
                                 <input type="hidden" id="vn_to_usd" value="{{round($vn_to_usd,2)}}">
                                 
